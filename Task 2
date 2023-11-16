@@ -1,0 +1,28 @@
+
+-- Database: `authordb`
+--
+DROP DATABASE IF EXISTS `authordb`;
+CREATE DATABASE IF NOT EXISTS `authordb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `authordb`;
+--
+-- Table structure for table `authorstb`
+--
+
+DROP TABLE IF EXISTS `authorstb`;
+CREATE TABLE authorstb (
+    AuthorId INT AUTO_INCREMENT PRIMARY KEY,
+    AuthorFullName VARCHAR(255) NOT NULL,
+    AuthorEmail VARCHAR(255) NOT NULL,
+    AuthorAddress VARCHAR(255),
+    AuthorBiography TEXT,
+    AuthorDateOfBirth DATE,
+    AuthorSuspended BOOLEAN
+);
+ ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Truncate table before insert `authorstb`
+--
+
+TRUNCATE TABLE `authorstb`;COMMIT;
+
