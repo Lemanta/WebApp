@@ -24,17 +24,14 @@
     <h1>View Authors</h1>
 
     <?php
-    // Assuming you have a function to fetch authors from the database
-    // and it returns an array $authors with each element being an associative array representing an author
+
 
     // Sample data for demonstration purposes
     $authors = array(
-        array("AuthorFullName" => "John Doe", "Email" => "john.doe@example.com", "Age" => 30),
-        array("AuthorFullName" => "Jane Smith", "Email" => "jane.smith@example.com", "Age" => 25),
-        // ... Add more authors as needed
+        array("AuthorID" => 1, "AuthorFullName" => "John Kamau", "AuthorAddress" => "j.kamau.gmailcom", "AuthorBiography" => "Published 5 books", "AuthorDateOfBirth" => "20/1/2000","AuthorSuspended" => "kkk"),
     );
 
-    // Sort the authors array by AuthorFullName in ascending order
+    // Sorting the authors array by AuthorFullName in ascending order
     usort($authors, function($a, $b) {
         return strcmp($a['AuthorFullName'], $b['AuthorFullName']);
     });
@@ -43,9 +40,12 @@
         echo '<table>';
         echo '<thead>';
         echo '<tr>';
-        echo '<th>Author Full Name</th>';
-        echo '<th>Email</th>';
-        echo '<th>Age</th>';
+        echo '<th>AuthorID</th>';
+        echo '<th>AuthorFullName</th>';
+        echo '<th>AuthorAddress</th>';
+        echo '<th>AuthorBiography</th>';
+        echo '<th>AuthorDateOfBirth</th>';
+        echo '<th>AuthorSuspended</th>';
         echo '</tr>';
         echo '</thead>';
         echo '<tbody>';
@@ -53,8 +53,10 @@
         foreach ($authors as $author) {
             echo '<tr>';
             echo '<td>' . $author['AuthorFullName'] . '</td>';
-            echo '<td>' . $author['Email'] . '</td>';
-            echo '<td>' . $author['Age'] . '</td>';
+            echo '<td>' . $author['AuthorAddress'] . '</td>';
+            echo '<td>' . $author['AuthorBiography'] . '</td>';
+            echo '<td><a href="EditAuth.php?id=' . $author['AuthorID'] . '">Edit</a></td>';
+            echo '<td><a href="DelAuth.php?id=' . $author['AuthorID'] . '">Delete</a></td>';
             echo '</tr>';
         }
 
