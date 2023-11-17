@@ -1,20 +1,15 @@
-# WebApp
-# Cat2
-
-/* Creating a form under index.php*/
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - DBT</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
 </head>
 <body>
+    
 
-<form action="processes/messages_proc.php" method="POST">
-    <label for="author_id">AuthorId:</label><br>
+<form action="processes/AutRegistration.php" method="post">
+<label for="author_id">AuthorId:</label><br>
     <input type="text" name="author_id" id="author_id" placeholder="Enter the Author Id" maxlength="60" required /><br><br>
 
     <label for="author_name">AuthorFullName:</label><br>
@@ -30,7 +25,11 @@
     <label for="author_biography">AuthorBiography:</label><br>
     <textarea name="author_biography" id="author_biography" placeholder="Enter the AuthorBiography" rows="10" required></textarea><br><br>
 
-    <input type="submit" name="send_message" value="Send Message" />
+
+
+    <input type="submit" value="Submit">
 </form>
+
+
 </body>
 </html>
