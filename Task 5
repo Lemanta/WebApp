@@ -1,0 +1,37 @@
+<?php
+// AutRegistration.php
+
+include_once('../configs/constants.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Assuming you have a form with fields named authorFullName, authorEmail, authorAddress, authorBiography, authorDateOfBirth, and authorSuspended
+
+    $authorFullName = $_POST["authorFullName"];
+    $authorEmail = $_POST["authorEmail"];
+    $authorAddress = $_POST["authorAddress"];
+    $authorBiography = $_POST["authorBiography"];
+    $authorDateOfBirth = $_POST["authorDateOfBirth"];
+    $authorSuspended = isset($_POST["authorSuspended"]) ? 1 : 0;
+
+    // Create a database connection
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Prepare and execute the SQL statement to insert data into the authors table
+    $sql = "INSERT INTO authorstb (AuthorFullName, AuthorEmail, AuthorAddress, AuthorBiography, AuthorDateOfBirth, AuthorSuspended)
+            VALUES ('$authorFullName', '$authorEmail', '$authorAddress', '$authorBiography', '$authorDateOfBirth', $authorSuspended)";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Author registration successful";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
+} else {
+    // Handle cases where the form wasn't submitted using POST
+    echo "Invalid request method";
+}
