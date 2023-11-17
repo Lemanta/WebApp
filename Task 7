@@ -1,0 +1,58 @@
+<?php
+
+// Sample data for demonstration purposes
+$authorId = isset($_GET['id']) ? $_GET['id'] : null;
+
+// Fetch author details by ID 
+$author = array(
+    "AuthorID" => 1,
+    "AuthorFullName" => "John Kamau",
+    "AuthorAddress" => "j.kamau@gmail.com",
+    "AuthorBiography" => "Published 5 books",
+    "AuthorDateOfBirth" => "20/1/2000",
+    "AuthorSuspended" => "kkk",
+
+);
+
+if ($authorId === null || empty($author)) {
+    // Handle invalid author ID or no author found
+    echo '<p>Invalid author ID or author not found.</p>';
+} else {
+    // Render the form with the author details
+    ?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edit Author</title>
+    </head>
+    <body>
+
+        <h1>Edit Author</h1>
+
+        <form action="UpdateAuthor.php" method="post">
+        <label for="author_id">AuthorId:</label><br>
+            <input type="text" name="author_id" id="author_id" placeholder="Enter the Author Id" maxlength="60" required /><br><br>
+
+            <label for="author_name">AuthorFullName:</label><br>
+            <input type="author_fullname" name="author_fullname" id="author_fullname" placeholder="Enter the FullName" maxlength="60" required /><br><br>
+
+            <label for="author_address">AuthorAddress:</label><br>
+            <input type="text" name="author_address" id="author_address" placeholder="Enter the AuthorAddress" maxlength="160" required /><br><br>
+     
+            <label for="dob">DoB:</label><br>
+            <input type="text" name="date_of_birth" id="date_of_birth" placeholder="Enter the DoB" maxlength="160" required /><br><br>
+
+
+            <label for="author_biography">AuthorBiography:</label><br>
+            <textarea name="author_biography" id="author_biography" placeholder="Enter the AuthorBiography" rows="10" required></textarea><br><br>
+
+            <input type="submit" value="Update">
+        </form>
+
+    </body>
+    </html>
+    <?php
+}
+?>
